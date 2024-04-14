@@ -1,95 +1,88 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+import Image from 'next/image';
+import { FormEvent, FormEventHandler } from 'react';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: #801580;
+  padding: 1rem;
+  width: 50%;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+`;
+
+const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.165rem;
+  width: 80%;
+`;
+
+const Input = styled.input`
+  padding: 0.5rem;
+  background-color: transparent;
+  outline: none;
+  &::placeholder {
+    color: white;
+  }
+  transition: 1s ease;
+  &:hover {
+    border: 1px solid rgba(0, 0, 0, 1);
+  }
+  border-radius: 0.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+`;
+
+const Button = styled.button`
+  padding: 0.5rem 1rem;
+  background-color: #4b4ba1;
+  border-radius: 0.25rem;
+  border: 1px solid #4b4ba1;
+
+  transition: 1s ease;
+  cursor: pointer;
+  &:hover {
+    background-color: #242435;
+  }
+`;
 
 export default function Home() {
+  function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    alert('Parabéns você é gay');
+  }
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    <>
+      <Container>
+        Formulário do João Vitor Siqueira Motta
+        <Form onSubmit={onSubmit}>
+          <InputContainer>
+            <label htmlFor='email'>E-mail</label>
+            <Input id='email' placeholder='E-mail' type='text' />
+          </InputContainer>
+          <InputContainer>
+            <label htmlFor='password'>Senha</label>
+            <Input id='password' placeholder='Senha' type='password' />
+          </InputContainer>
+          <Button>Sign-in</Button>
+        </Form>
+      </Container>
+    </>
   );
 }
